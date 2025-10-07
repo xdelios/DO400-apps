@@ -21,12 +21,12 @@ pipeline{
             }
         }
 
-        stage('Deploy'){
+        stage("Deploy"){
             steps{
-                sh '''
+                sh """
                     oc project rplvvx-deployment-strategies
                     oc start-build greeting-service --follow --wait
-                '''
+                """
             }
         }
     }
