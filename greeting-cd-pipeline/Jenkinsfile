@@ -1,17 +1,23 @@
 pipeline {
     agent { label 'nodejs' }
 
-    // Set your OCP project
-    environment { APP_NAMESPACE = '...' }
-
     stages{
-
         stage('Test'){
-            steps {
-                sh "node test.js"
+            steps{
+                dir('greeting-cd-pipeline'){
+                    sh "node test.js"
+                }
             }
         }
-
-        // Add more stages here
+        stage('Deploy'){
+            steps{
+                dir('greeting-cd-pipeline'){
+                    sh '''
+                        oc start-build greeting-metrics \
+                        --follow --wait -n rlpvvx-metrics
+                    '''
+                }
+            }
+        }
     }
 }
