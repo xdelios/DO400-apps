@@ -55,6 +55,7 @@ pipeline {
                             -u $QUAY_USR \
                             -n $APP_NAMESPACE \
                             -t $TAG_TO_DEPLOY
+                        """
                     }
                         
                 }
