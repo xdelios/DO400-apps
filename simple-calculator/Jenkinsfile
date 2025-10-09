@@ -18,6 +18,11 @@ pipeline{
             }
         }
     }
+    post{
+        always {
+            sendNotifications('finished', 'team@example.com')
+        }
+    }
 }
 
 void sendNotifications(String action, String email){
