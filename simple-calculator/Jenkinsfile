@@ -5,7 +5,7 @@ pipeline{
         stage('Checkout'){
             steps{
                 sendNotifications('started','team@example.com')
-                git branch: 'notifications',
+                git branch: 'solutions',
                 url: 'https://github.com/xdelios/DO400-apps.git'
             }
         }
